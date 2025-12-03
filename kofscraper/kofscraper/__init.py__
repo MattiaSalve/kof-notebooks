@@ -1,0 +1,7 @@
+"""
+A set of utilities for the KOFScraper project
+"""
+
+from .config import(
+	DATA_DIR, KEYWORDS_FILE, PATENTS_DATA
+)
