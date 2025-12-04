@@ -179,7 +179,7 @@ def get_companies_with_n_unique_kws(df: pl.DataFrame, thresh: int) -> pl.DataFra
         )
         .group_by("ID")
         .agg(pl.col("category"))
-    )
+    ).with_columns(n_unique=pl.col("category").list.len())
     return df
 
 
