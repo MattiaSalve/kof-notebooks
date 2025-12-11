@@ -1,7 +1,0 @@
-setup.py
-kofscraper/config.py
-kofscraper/functions.py
-kofscraper.egg-info/PKG-INFO
-kofscraper.egg-info/SOURCES.txt
-kofscraper.egg-info/dependency_links.txt
-kofscraper.egg-info/top_level.txt
