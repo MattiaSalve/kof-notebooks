@@ -75,7 +75,7 @@ def load_parquets(path: str) -> pl.LazyFrame:
 
 
 def load_keyword_matches(filename: str) -> pl.DataFrame:
-    from config import DATA_DIR
+    from .config import DATA_DIR
 
     df = pl.read_parquet(DATA_DIR + "/processed/" + filename)
     df = (

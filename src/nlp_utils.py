@@ -29,7 +29,7 @@ def perform_chunked_function(lf: pl.LazyFrame, chunk_size: int, function, *args)
     for i in range(0, n_rows, chunk_size):
         frame = lf.slice(i, chunk_size).collect(engine="streaming")
 
-        result = function(frame, *args)
+        result = function(frame, args)
         result.write_parquet(DIR / f"result_{i}.parquet")
 
         del frame, result

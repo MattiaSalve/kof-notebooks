@@ -2,8 +2,3 @@ __pycache__/
 data/
 .venv/
 notebooks/output/
-notebooks/out/
-notebooks/out_gemma/
-notebooks/out_gemma.zip
-notebooks/result.parquet
-

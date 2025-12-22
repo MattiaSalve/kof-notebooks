@@ -5,3 +5,5 @@ axes.facecolor: ffffff
 axes.ymargin: 0.1
 axes.spines.right: False
 axes.spines.top: False
+font.family: sans-serif
+font.sans-serif: Noto Sans
