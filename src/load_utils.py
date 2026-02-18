@@ -2,6 +2,11 @@ import enum
 import glob
 import gc
 from pathlib import Path
+import pandas as pd
+import polars as pl
+import json
+from io import StringIO
+
 
 import pyarrow.parquet as pq
 import polars as pl
@@ -84,3 +89,22 @@ def load_keyword_matches(filename: str) -> pl.DataFrame:
         .rename({"matches": "keyword"})
     )
     return df
+
+def read_json_files(path):
+    data = pl.read_ndjson(path)
+    ids = data["custom_id"].str.slice(0, 14)
+    data = (
+        data.select("response")
+        .unnest("response")
+        .unnest("body")
+        .select("choices")
+        .with_columns(pl.col("choices").list.get(0))
+        .unnest("choices")
+        .select("message")
+        .unnest("message")
+        .select("content")
+        .map_rows(lambda v: json.loads(v[0]))
+        .unnest("map")
+    )
+    data = data.with_columns(pl.lit(ids).alias("ID"))
+    return data
